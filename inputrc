@@ -1,0 +1,23 @@
+# /etc/inputrc
+
+# Wrapping
+set horizontal-scroll-mode Off
+
+# 8-bit stuff
+set meta-flag On
+set input-meta On
+set convert-meta Off
+set output-meta On
+
+# Annoying bell
+set bell-style none
+
+# Escape sequences
+"\eOd": backward-word
+"\eOc": forward-word
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert

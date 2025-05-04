@@ -1,0 +1,6 @@
+NAME="Linux From Scratch"
+VERSION="9999"
+ID=lfs
+PRETTY_NAME="Linux From Scratch Tox-9999"
+VERSION_CODENAME="Tox"
+HOME_URL="https://www.linuxfromscratch.org/lfs/"

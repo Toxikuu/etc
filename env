@@ -1,0 +1,20 @@
+# /etc/env, /etc/profile, /etc/bashrc
+
+#  ______     __   __     __   __
+# /\  ___\   /\ "-.\ \   /\ \ / /
+# \ \  __\   \ \ \-.  \  \ \ \'/
+#  \ \_____\  \ \_\\"\_\  \ \__|
+#   \/_____/   \/_/ \/_/   \/_/
+
+# I have these linked because I'd rather just have a consistent environment
+# Everything is set in individual files in /etc/profile.d/
+
+# These are set both to source all the scripts in profile.d. They are kept
+# afterwards because I think they're sane defaults and find them useful.
+shopt -s nullglob globstar
+
+for f in /etc/profile.d/**/*; do
+    if [ -f "$f" ] && [ -r "$f" ]; then
+        source "$f"
+    fi
+done
