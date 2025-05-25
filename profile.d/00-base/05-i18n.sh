@@ -8,15 +8,14 @@ done
 # Just use C if on a tty
 if [[ "$(tty)" =~ /dev/tty ]]; then
     export LANG=C.UTF-8
-    exit 0
+else
+    # Otherwise, use a regular locale
+    [ -r /etc/locale.conf ] && source /etc/locale.conf
+
+    for i in $(locale); do
+        key="${i%=*}"
+        if [[ -v $key ]]; then
+            export "${key?}"
+        fi
+    done
 fi
-
-# Otherwise, use a regular locale
-source /etc/locale.conf
-
-for i in $(locale); do
-    key="${i%=*}"
-    if [[ -v $key ]]; then
-        export "${key?}"
-    fi
-done

@@ -21,7 +21,12 @@ sed "s,|HOSTNAME|,$HOSTNAME,g" -i hostname hosts
 
 # Install stuff
 echo "Installing stuff"
-find . -mindepth 1 ! -name 'LICENSE' -a ! -name 'README.md' -exec \
-    install -vDm755 {} -t "$D/etc" \;
+find . -mindepth 1 -maxdepth 1          \
+        ! -name '.*' -a                 \
+        ! -name 'install.sh' -a         \
+        ! -name 'LICENSE' -a            \
+        ! -name 'README.md' -exec       \
+    install -vDm644 {} -t "${D-}/etc"   \;
+cp -af "profile.d" "${D-}/etc/profile.d"
 
 popd &>/dev/null
